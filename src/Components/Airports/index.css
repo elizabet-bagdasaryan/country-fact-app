@@ -1,0 +1,18 @@
+.airports {
+  margin: 24px 0;
+  padding: 16px;
+}
+
+.airports h1 {
+  font-weight: 400;
+  margin: 0;
+}
+
+.airports-grid {
+  display: flex;
+  align-items: center;
+}
+
+.airport-name {
+  margin: 5px 0;
+}

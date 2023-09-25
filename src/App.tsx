@@ -56,7 +56,20 @@ function App() {
     axios
       .get<Country[]>("https://restcountries.com/v3.1/all")
       .then((response) => {
-        setCountries(response.data);
+        setCountries(
+          response.data.sort((country1, country2) => {
+            const nameA = country1.name.common.toUpperCase();
+            const nameB = country2.name.common.toUpperCase();
+            if (nameA < nameB) {
+              return -1;
+            }
+            if (nameA > nameB) {
+              return 1;
+            }
+
+            return 0;
+          })
+        );
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -78,10 +91,7 @@ function App() {
   }, [countries, fetchCountryFromCoordinates]);
 
   return (
-    <Container
-      maxWidth="lg"
-      style={{ border: "1px solid rgb(204, 204, 204)", padding: "24px" }}
-    >
+    <Container maxWidth="lg" className="container">
       <FormControl fullWidth>
         <InputLabel id="selectedCountry">Country</InputLabel>
         <Select
@@ -106,7 +116,7 @@ function App() {
           {countries.length > 0 ? (
             countries.map((country) => (
               <MenuItem value={country.cca2} key={country.cca2}>
-                {country.name.official}
+                {country.name.common}
               </MenuItem>
             ))
           ) : (

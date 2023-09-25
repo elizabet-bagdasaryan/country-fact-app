@@ -1,0 +1,21 @@
+.exchange {
+  margin: 24px 0;
+  padding: 16px;
+}
+
+.exchange h1 {
+  font-weight: 400;
+  margin: 0;
+  margin-bottom: 16px;
+}
+
+#currencySelectedCountry {
+  width: 300px;
+}
+
+.exchange-inputs-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}

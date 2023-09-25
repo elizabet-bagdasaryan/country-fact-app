@@ -1,0 +1,31 @@
+.country-info {
+  margin: 24px 0;
+  padding: 16px;
+}
+
+.country-info .header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.country-info .header h1 {
+  font-weight: 400;
+  margin: 0;
+}
+
+.country-info .header img {
+  height: 30px;
+  margin-left: 16px;
+}
+
+.country-info .grid-item {
+  display: flex;
+  align-items: center;
+}
+
+.country-info .grid-item .key {
+  font-weight: 600;
+  width: 110px;
+  margin: 5px 0;
+}

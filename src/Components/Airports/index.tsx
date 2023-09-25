@@ -2,11 +2,13 @@ import { Grid, Paper, Skeleton, TextField } from "@mui/material";
 import { FC, useEffect, useState } from "react";
 import { Airport } from "../../types";
 import axios from "axios";
+import "./index.css";
 
 export interface AirportsProps {
   countryCode?: string;
   currentTab: string;
 }
+const AIRPORTS_API_KEY = "vxFEkuQjSEJYO6KIrJ3hig==z2GqVtye06574Ffw";
 
 const Airports: FC<AirportsProps> = ({ countryCode, currentTab }) => {
   const [airportsCountry, setAirportsCountry] = useState<string>();
@@ -16,13 +18,12 @@ const Airports: FC<AirportsProps> = ({ countryCode, currentTab }) => {
   useEffect(() => {
     if (countryCode && airportsCountry !== countryCode) {
       setAirports(undefined);
-      const apiUrl = `https://api.api-ninjas.com/v1/airports?country=${countryCode}`;
-      const apiKey = "vxFEkuQjSEJYO6KIrJ3hig==z2GqVtye06574Ffw";
 
+      const airportsApiUrl = `https://api.api-ninjas.com/v1/airports?country=${countryCode}`;
       axios
-        .get(apiUrl, {
+        .get(airportsApiUrl, {
           headers: {
-            "X-Api-Key": apiKey,
+            "X-Api-Key": AIRPORTS_API_KEY,
           },
         })
         .then((response) => {
@@ -40,18 +41,22 @@ const Airports: FC<AirportsProps> = ({ countryCode, currentTab }) => {
   });
 
   return (
-    <Paper elevation={1} style={{ margin: "24px 0", padding: "16px" }}>
-      <h1 style={{ fontWeight: 400, margin: "0" }}>Airports</h1>
+    <Paper elevation={1} className="airports">
+      <h1>Airports</h1>
 
       <TextField
         label="Search for Airport"
         variant="standard"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        style={{ margin: "16px 0" }}
       />
 
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+      <Grid
+        container
+        rowSpacing={1}
+        mt={2}
+        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+      >
         {filteredAirports
           ? filteredAirports.map((airport) => (
               <Grid
@@ -59,9 +64,9 @@ const Airports: FC<AirportsProps> = ({ countryCode, currentTab }) => {
                 item
                 xs={12}
                 sm={6}
-                style={{ display: "flex", alignItems: "center" }}
+                className="airports-grid"
               >
-                <p style={{ margin: "5px 0" }}>{airport.name}</p>
+                <p className="airport-name">{airport.name}</p>
               </Grid>
             ))
           : new Array(4).fill(0).map((_, index) => (
