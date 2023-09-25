@@ -1,4 +1,4 @@
-# Space Tourism App
+# Countries Fact App
 
 This app helps you explore countries, airports, and currencies. It detects your location for quick country info and airport lists. You can also manually select a country for the same details and convert currencies.
 
