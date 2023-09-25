@@ -13,7 +13,7 @@ This app helps you explore countries, airports, and currencies. It detects your 
 
 ## Installation
 
-1. Clone the repository: `https://github.com/elizabet-bagdasaryan/country-fact-app`
+1. Clone the repository: `https://github.com/elizabet-bagdasaryan/country-fact-app.git`
 2. Install dependencies: `npm install`
 3. Start the application: `npm run dev`
 
